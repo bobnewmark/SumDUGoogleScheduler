@@ -1,0 +1,32 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+archivesBaseName = 'sumdu'
+version = '1.0-SNAPSHOT'
+
+def javaVersion = JavaVersion.VERSION_1_8
+sourceCompatibility = javaVersion
+targetCompatibility = javaVersion
+
+repositories {
+    mavenCentral()
+}
+jar {
+    manifest {
+        attributes 'Main-Class': 'src.java.com.sumdu.Main'
+    }
+}
+dependencies {
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:1.1.4.RELEASE'
+    compile 'org.hibernate:hibernate-core:4.3.6.Final'
+    compile 'javax.servlet:javax.servlet-api:3.1.0'
+    compile 'org.slf4j:slf4j-simple:1.7.7'
+    compile 'org.javassist:javassist:3.15.0-GA'
+    compile 'mysql:mysql-connector-java:5.1.31'
+    compile 'commons-dbcp:commons-dbcp:1.4'
+    compile group: 'org.json', name: 'json', version: '20180130'
+    compile 'com.google.api-client:google-api-client:1.23.0'
+    compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
+    compile 'com.google.apis:google-api-services-calendar:v3-rev296-1.23.0'
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+}
+
