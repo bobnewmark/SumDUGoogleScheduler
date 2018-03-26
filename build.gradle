@@ -12,7 +12,7 @@ repositories {
 }
 jar {
     manifest {
-        attributes 'Main-Class': 'src.java.com.sumdu.Main'
+        attributes 'Main-Class': 'com.sumdu.Main'
     }
 }
 dependencies {

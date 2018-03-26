@@ -4,6 +4,7 @@ import com.sumdu.dao.DoubleClassDao;
 import com.sumdu.dao.IDoubleClassDao;
 import com.sumdu.entity.DoubleClass;
 import org.apache.commons.dbcp.BasicDataSource;
+import org.apache.log4j.Logger;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -24,6 +25,7 @@ import java.util.Properties;
 public class AppConfig {
 
     private static Properties props = new Properties();
+    private static Logger LOG = Logger.getLogger(AppConfig.class);
 
     @Autowired
     private Environment env;
@@ -64,10 +66,8 @@ public class AppConfig {
         return new HibernateTransactionManager(sessionFactory());
     }
 
-
     final Properties hibernateProperties() {
         final Properties hibernateProperties = new Properties();
-
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", props.getProperty("hibernate.hbm2ddl.auto"));
         hibernateProperties.setProperty("hibernate.dialect", props.getProperty("hibernate.dialect"));
         return hibernateProperties;
@@ -80,7 +80,7 @@ public class AppConfig {
             props.load(in);
             in.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error(e);
         }
     }
 
