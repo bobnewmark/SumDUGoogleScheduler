@@ -4,7 +4,8 @@ import com.sumdu.entity.DoubleClass;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
+//import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 
 import java.util.List;
 

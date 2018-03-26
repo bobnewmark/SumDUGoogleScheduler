@@ -21,10 +21,7 @@ import org.apache.log4j.Logger;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.text.ParseException;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class CalendarOperations {
 
@@ -75,8 +72,13 @@ public class CalendarOperations {
 
     public static List<Event> getCalendarSchedule() {
         com.google.api.services.calendar.Calendar service = getCalendarService();
-        DateTime now = new DateTime(System.currentTimeMillis());
+        Calendar c = new GregorianCalendar();
+        c.set(Calendar.HOUR_OF_DAY, 0);
+        c.set(Calendar.MINUTE, 0);
+        c.set(Calendar.SECOND, 0);
+        DateTime now = new DateTime(c.getTime().getTime());
         Events events = null;
+
         try {
             events = service.events().list("primary")
                     .setMaxResults(50)

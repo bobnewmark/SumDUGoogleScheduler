@@ -10,14 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
-import org.springframework.orm.hibernate4.HibernateTemplate;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+//import org.springframework.orm.hibernate4.HibernateTemplate;
+//import org.springframework.orm.hibernate4.HibernateTransactionManager;
+//import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.HibernateTemplate;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 @Configuration
@@ -74,9 +78,9 @@ public class AppConfig {
     }
 
     static {
-        FileInputStream in;
+        InputStream in;
         try {
-            in = new FileInputStream("src\\main\\resources\\application.properties");
+            in = AppConfig.class.getResourceAsStream("/application.properties");
             props.load(in);
             in.close();
         } catch (IOException e) {
